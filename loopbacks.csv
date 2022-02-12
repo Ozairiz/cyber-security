@@ -1,0 +1,5 @@
+Interface,IP,Description,Bandwidth,Setting
+loopback50,50.50.50.50 255.255.255.255,LOOPBACK50!!!,10000,Duplex Full
+loopback60,60.60.60.60 255.255.255.255,LOOPBACK60!!!,10000,Duplex Full
+loopback70,70.70.70.70 255.255.255.255,LOOPBACK70!!!,10000,Duplex Full
+loopback80,80.80.80.80 255.255.255.255,LOOPBACK80!!!,10000,Duplex Full
