@@ -1,0 +1,117 @@
+# Nmap 7.94 scan initiated Sun Nov 24 05:21:34 2024 as: nmap -A -oA intense-scan 192.168.121.132
+Nmap scan report for 192.168.121.132
+Host is up (0.00023s latency).
+Not shown: 980 closed tcp ports (reset)
+PORT      STATE SERVICE            VERSION
+21/tcp    open  ftp                FileZilla ftpd
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| drwxr-xr-x 1 ftp ftp              0 Jul 16  2020 aspnet_client
+| -rw-r--r-- 1 ftp ftp            689 Jul 16  2020 iisstart.htm
+|_-rw-r--r-- 1 ftp ftp         184946 Jul 16  2020 welcome.png
+| ftp-syst: 
+|_  SYST: UNIX emulated by FileZilla
+22/tcp    open  ssh                Bitvise WinSSHD 9.39 (FlowSsh 9.39; protocol 2.0)
+| ssh-hostkey: 
+|   3072 35:ae:c3:da:83:5a:bc:25:cc:a6:6b:f4:48:4b:14:fc (RSA)
+|_  384 40:3c:a1:e4:24:ba:1e:ce:c6:b1:c9:8c:9a:27:31:33 (ECDSA)
+23/tcp    open  telnet             Microsoft Windows XP telnetd
+| telnet-ntlm-info: 
+|   Target_Name: KING-ARTHUR
+|   NetBIOS_Domain_Name: KING-ARTHUR
+|   NetBIOS_Computer_Name: KING-ARTHUR
+|   DNS_Domain_Name: king-arthur
+|   DNS_Computer_Name: king-arthur
+|_  Product_Version: 6.1.7601
+80/tcp    open  http               Microsoft IIS httpd 7.5
+|_http-server-header: Microsoft-IIS/7.5
+|_http-title: IIS7
+| http-methods: 
+|_  Potentially risky methods: TRACE
+135/tcp   open  msrpc              Microsoft Windows RPC
+139/tcp   open  netbios-ssn        Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds       Windows Server 2008 R2 Enterprise 7601 Service Pack 1 microsoft-ds
+3389/tcp  open  ssl/ms-wbt-server?
+| ssl-cert: Subject: commonName=king-arthur
+| Not valid before: 2024-11-12T21:25:21
+|_Not valid after:  2025-05-14T21:25:21
+|_ssl-date: 2024-11-24T05:58:55+00:00; -4h24m38s from scanner time.
+| rdp-ntlm-info: 
+|   Target_Name: KING-ARTHUR
+|   NetBIOS_Domain_Name: KING-ARTHUR
+|   NetBIOS_Computer_Name: KING-ARTHUR
+|   DNS_Domain_Name: king-arthur
+|   DNS_Computer_Name: king-arthur
+|   Product_Version: 6.1.7601
+|_  System_Time: 2024-11-24T05:58:21+00:00
+5800/tcp  open  vnc-http           RealVNC 4.0 (resolution: 400x250; VNC TCP port: 5900)
+|_http-server-header: RealVNC/4.0
+|_http-title: VNC viewer for Java
+5900/tcp  open  vnc                VNC (protocol 3.8)
+| vnc-info: 
+|   Protocol version: 3.8
+|   Security types: 
+|_    VNC Authentication (2)
+8022/tcp  open  http               Apache Tomcat/Coyote JSP engine 1.1
+| http-methods: 
+|_  Potentially risky methods: PUT DELETE
+|_http-server-header: Apache-Coyote/1.1
+|_http-title: Site doesn't have a title (text/html;charset=UTF-8).
+8031/tcp  open  ssl/unknown
+8383/tcp  open  http               Apache httpd
+|_http-server-header: Apache
+|_http-title: 400 Bad Request
+| http-methods: 
+|_  Potentially risky methods: PUT DELETE
+8443/tcp  open  ssl/https-alt?
+48080/tcp open  http               Jetty 6.1.x
+| http-methods: 
+|_  Potentially risky methods: TRACE
+| http-title:  SolarWinds FSM Change Advisor
+|_Requested resource was http://192.168.121.132:48080/fsm/login.jsp
+|_http-trane-info: Problem with XML parsing of /evox/about
+| http-cookie-flags: 
+|   /: 
+|     JSESSIONID: 
+|_      httponly flag not set
+|_http-server-header: Jetty(6.1.x)
+49152/tcp open  msrpc              Microsoft Windows RPC
+49153/tcp open  msrpc              Microsoft Windows RPC
+49154/tcp open  msrpc              Microsoft Windows RPC
+49159/tcp open  msrpc              Microsoft Windows RPC
+49161/tcp open  msrpc              Microsoft Windows RPC
+MAC Address: 00:0C:29:50:CB:77 (VMware)
+Device type: general purpose
+Running: Microsoft Windows 7|2008|8.1
+OS CPE: cpe:/o:microsoft:windows_7::- cpe:/o:microsoft:windows_7::sp1 cpe:/o:microsoft:windows_server_2008::sp1 cpe:/o:microsoft:windows_server_2008:r2 cpe:/o:microsoft:windows_8 cpe:/o:microsoft:windows_8.1
+OS details: Microsoft Windows 7 SP0 - SP1, Windows Server 2008 SP1, Windows Server 2008 R2, Windows 8, or Windows 8.1 Update 1
+Network Distance: 1 hop
+Service Info: OSs: Windows, Windows XP, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_xp
+
+Host script results:
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-time: 
+|   date: 2024-11-24T05:58:20
+|_  start_date: 2024-11-24T05:35:18
+|_nbstat: NetBIOS name: KING-ARTHUR, NetBIOS user: <unknown>, NetBIOS MAC: 00:0c:29:50:cb:77 (VMware)
+| smb-os-discovery: 
+|   OS: Windows Server 2008 R2 Enterprise 7601 Service Pack 1 (Windows Server 2008 R2 Enterprise 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_server_2008::sp1
+|   Computer name: king-arthur
+|   NetBIOS computer name: KING-ARTHUR\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2024-11-24T13:58:21+08:00
+| smb2-security-mode: 
+|   2:1:0: 
+|_    Message signing enabled but not required
+|_clock-skew: mean: -5h44m40s, deviation: 3h15m56s, median: -4h24m41s
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   0.23 ms 192.168.121.132
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Nov 24 05:23:33 2024 -- 1 IP address (1 host up) scanned in 119.67 seconds

@@ -1,0 +1,43 @@
+# Nmap 7.94 scan initiated Mon Nov 18 16:42:24 2024 as: nmap -sS -sV -p- -iL ip.txt -oA Service-Version-Scan
+Nmap scan report for 192.168.121.132
+Host is up (0.00021s latency).
+Not shown: 65502 closed tcp ports (reset)
+PORT      STATE SERVICE            VERSION
+21/tcp    open  ftp                FileZilla ftpd
+22/tcp    open  tcpwrapped
+23/tcp    open  telnet             Microsoft Windows XP telnetd
+80/tcp    open  http               Microsoft IIS httpd 7.5
+135/tcp   open  msrpc              Microsoft Windows RPC
+139/tcp   open  netbios-ssn        Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds       Microsoft Windows Server 2008 R2 - 2012 microsoft-ds
+3050/tcp  open  firebird           Firebird RDBMS Protocol version 10
+3389/tcp  open  ssl/ms-wbt-server?
+4568/tcp  open  java-rmi           Java RMI
+5800/tcp  open  vnc-http           RealVNC 4.0 (resolution: 400x250; VNC TCP port: 5900)
+5900/tcp  open  vnc                VNC (protocol 3.8)
+8019/tcp  open  qbdb?
+8020/tcp  open  http               Apache httpd
+8022/tcp  open  http               Apache Tomcat/Coyote JSP engine 1.1
+8027/tcp  open  papachi-p2p-srv?
+8028/tcp  open  postgresql         PostgreSQL DB
+8031/tcp  open  ssl/unknown
+8032/tcp  open  desktop-central    ManageEngine Desktop Central DesktopCentralServer
+8383/tcp  open  http               Apache httpd
+8443/tcp  open  ssl/https-alt?
+8444/tcp  open  desktop-central    ManageEngine Desktop Central DesktopCentralServer
+17784/tcp open  ssl/unknown
+45680/tcp open  ssl/unknown
+47001/tcp open  http               Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+48080/tcp open  http               Jetty 6.1.x
+49152/tcp open  msrpc              Microsoft Windows RPC
+49153/tcp open  msrpc              Microsoft Windows RPC
+49154/tcp open  msrpc              Microsoft Windows RPC
+49160/tcp open  msrpc              Microsoft Windows RPC
+49161/tcp open  unknown
+49162/tcp open  msrpc              Microsoft Windows RPC
+49165/tcp open  msrpc              Microsoft Windows RPC
+MAC Address: 00:0C:29:50:CB:77 (VMware)
+Service Info: OSs: Windows, Windows XP, Windows Server 2008 R2 - 2012; Device: remote management; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_xp
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Nov 18 16:45:46 2024 -- 1 IP address (1 host up) scanned in 201.47 seconds

@@ -1,0 +1,129 @@
+# Nmap 7.94 scan initiated Mon Nov 18 16:46:10 2024 as: nmap -sC -sV -p- -iL ip.txt -oA Default-Version-Scan
+Nmap scan report for 192.168.121.132
+Host is up (0.00021s latency).
+Not shown: 65502 closed tcp ports (reset)
+PORT      STATE SERVICE            VERSION
+21/tcp    open  ftp                FileZilla ftpd
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| drwxr-xr-x 1 ftp ftp              0 Jul 16  2020 aspnet_client
+| -rw-r--r-- 1 ftp ftp            689 Jul 16  2020 iisstart.htm
+|_-rw-r--r-- 1 ftp ftp         184946 Jul 16  2020 welcome.png
+| ftp-syst: 
+|_  SYST: UNIX emulated by FileZilla
+22/tcp    open  tcpwrapped
+|_ssh-hostkey: ERROR: Script execution failed (use -d to debug)
+23/tcp    open  telnet             Microsoft Windows XP telnetd
+| telnet-ntlm-info: 
+|   Target_Name: KING-ARTHUR
+|   NetBIOS_Domain_Name: KING-ARTHUR
+|   NetBIOS_Computer_Name: KING-ARTHUR
+|   DNS_Domain_Name: king-arthur
+|   DNS_Computer_Name: king-arthur
+|_  Product_Version: 6.1.7601
+80/tcp    open  http               Microsoft IIS httpd 7.5
+|_http-server-header: Microsoft-IIS/7.5
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-title: IIS7
+135/tcp   open  msrpc              Microsoft Windows RPC
+139/tcp   open  netbios-ssn        Microsoft Windows netbios-ssn
+445/tcp   open  PHÐ€ÔU             Windows Server 2008 R2 Enterprise 7601 Service Pack 1 microsoft-ds
+3050/tcp  open  firebird           Firebird RDBMS Protocol version 10
+3389/tcp  open  ssl/ms-wbt-server?
+|_ssl-date: 2024-11-18T14:12:01+00:00; -7h37m51s from scanner time.
+| ssl-cert: Subject: commonName=king-arthur
+| Not valid before: 2024-11-12T21:25:21
+|_Not valid after:  2025-05-14T21:25:21
+4568/tcp  open  java-rmi           Java RMI
+| rmi-dumpregistry: 
+|   LicenseService
+|     org.springframework.remoting.rmi.RmiInvocationWrapper_Stub
+|     @WIN-SKTTA14M4TM!192.168.1.62!127.0.0.1:45680
+|     extends
+|       java.rmi.server.RemoteStub
+|       extends
+|_        java.rmi.server.RemoteObject
+5800/tcp  open  vnc-http           RealVNC 4.0 (resolution: 400x250; VNC TCP port: 5900)
+|_http-server-header: RealVNC/4.0
+|_http-title: VNC viewer for Java
+5900/tcp  open  vnc                VNC (protocol 3.3; Locked out)
+| vnc-info: 
+|   Protocol version: 3.8
+|   Security types: 
+|_    VNC Authentication (2)
+8019/tcp  open  qbdb?
+8020/tcp  open  http               Apache httpd
+|_http-server-header: Apache
+|_http-title: Site doesn't have a title (text/html;charset=UTF-8).
+| http-methods: 
+|_  Potentially risky methods: PUT DELETE
+8022/tcp  open  http               Apache Tomcat/Coyote JSP engine 1.1
+|_http-server-header: Apache-Coyote/1.1
+|_http-title: Site doesn't have a title (text/html;charset=UTF-8).
+| http-methods: 
+|_  Potentially risky methods: PUT DELETE
+8027/tcp  open  papachi-p2p-srv?
+8028/tcp  open  postgresql         PostgreSQL DB
+8031/tcp  open  ssl/unknown
+8032/tcp  open  desktop-central    ManageEngine Desktop Central DesktopCentralServer
+8383/tcp  open  http               Apache httpd
+|_http-title: 400 Bad Request
+| http-methods: 
+|_  Potentially risky methods: PUT DELETE
+|_http-server-header: Apache
+8443/tcp  open  ssl/https-alt?
+8444/tcp  open  desktop-central    ManageEngine Desktop Central DesktopCentralServer
+17784/tcp open  ssl/unknown
+| ssl-cert: Subject: commonName=fsmweb/organizationName=Solarwind/stateOrProvinceName=Texas/countryName=US
+| Not valid before: 2013-08-15T13:32:01
+|_Not valid after:  2063-08-15T13:32:01
+|_ssl-date: 2024-11-18T14:12:00+00:00; -7h37m52s from scanner time.
+45680/tcp open  ssl/unknown
+47001/tcp open  http               Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-title: Not Found
+|_http-server-header: Microsoft-HTTPAPI/2.0
+48080/tcp open  http               Jetty 6.1.x
+| http-title:  SolarWinds FSM Change Advisor
+|_Requested resource was http://192.168.121.132:48080/fsm/login.jsp
+| http-cookie-flags: 
+|   /: 
+|     JSESSIONID: 
+|_      httponly flag not set
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-trane-info: Problem with XML parsing of /evox/about
+|_http-server-header: Jetty(6.1.x)
+49152/tcp open  msrpc              Microsoft Windows RPC
+49153/tcp open  msrpc              Microsoft Windows RPC
+49154/tcp open  msrpc              Microsoft Windows RPC
+49160/tcp open  msrpc              Microsoft Windows RPC
+49161/tcp open  unknown
+49162/tcp open  msrpc              Microsoft Windows RPC
+49165/tcp open  msrpc              Microsoft Windows RPC
+MAC Address: 00:0C:29:50:CB:77 (VMware)
+Service Info: OSs: Windows, Windows XP, Windows Server 2008 R2 - 2012; Device: remote management; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_xp
+
+Host script results:
+| smb-security-mode: 
+|   account_used: <blank>
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb-os-discovery: 
+|   OS: Windows Server 2008 R2 Enterprise 7601 Service Pack 1 (Windows Server 2008 R2 Enterprise 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_server_2008::sp1
+|   Computer name: king-arthur
+|   NetBIOS computer name: KING-ARTHUR\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2024-11-18T22:11:30+08:00
+| smb2-time: 
+|   date: 2024-11-18T14:11:31
+|_  start_date: 2024-11-18T10:38:35
+|_clock-skew: mean: -8h57m53s, deviation: 3h15m56s, median: -7h37m55s
+| smb2-security-mode: 
+|   2:1:0: 
+|_    Message signing enabled but not required
+|_nbstat: NetBIOS name: KING-ARTHUR, NetBIOS user: <unknown>, NetBIOS MAC: 00:0c:29:50:cb:77 (VMware)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Nov 18 16:50:25 2024 -- 1 IP address (1 host up) scanned in 255.11 seconds
