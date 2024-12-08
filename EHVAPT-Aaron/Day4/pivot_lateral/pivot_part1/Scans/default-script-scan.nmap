@@ -1,0 +1,46 @@
+# Nmap 7.94 scan initiated Sat Dec  7 21:14:22 2024 as: nmap -sC -sV -O -oA default-script-scan 192.168.10.11
+Nmap scan report for 192.168.10.11
+Host is up (0.00031s latency).
+Not shown: 991 closed tcp ports (reset)
+PORT      STATE SERVICE     VERSION
+135/tcp   open  msrpc       Microsoft Windows RPC
+139/tcp   open  netbios-ssn Microsoft Windows netbios-ssn
+445/tcp   open            Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+49152/tcp open  msrpc       Microsoft Windows RPC
+49153/tcp open  msrpc       Microsoft Windows RPC
+49154/tcp open  msrpc       Microsoft Windows RPC
+49155/tcp open  msrpc       Microsoft Windows RPC
+49156/tcp open  msrpc       Microsoft Windows RPC
+49157/tcp open  msrpc       Microsoft Windows RPC
+MAC Address: 00:0C:29:0A:02:4D (VMware)
+Device type: general purpose
+Running: Microsoft Windows 7|2008|8.1
+OS CPE: cpe:/o:microsoft:windows_7::- cpe:/o:microsoft:windows_7::sp1 cpe:/o:microsoft:windows_server_2008::sp1 cpe:/o:microsoft:windows_server_2008:r2 cpe:/o:microsoft:windows_8 cpe:/o:microsoft:windows_8.1
+OS details: Microsoft Windows 7 SP0 - SP1, Windows Server 2008 SP1, Windows Server 2008 R2, Windows 8, or Windows 8.1 Update 1
+Network Distance: 1 hop
+Service Info: Host: EARL; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+|_clock-skew: mean: 18h39m59s, deviation: 4h37m07s, median: 15h59m59s
+| smb2-time: 
+|   date: 2024-12-08T18:15:40
+|_  start_date: 2024-12-08T18:08:04
+|_nbstat: NetBIOS name: EARL, NetBIOS user: <unknown>, NetBIOS MAC: 00:0c:29:0a:02:4d (VMware)
+| smb2-security-mode: 
+|   2:1:0: 
+|_    Message signing enabled but not required
+| smb-os-discovery: 
+|   OS: Windows 7 Professional 7601 Service Pack 1 (Windows 7 Professional 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_7::sp1:professional
+|   Computer name: earl
+|   NetBIOS computer name: EARL\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2024-12-08T10:15:40-08:00
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Dec  7 21:15:45 2024 -- 1 IP address (1 host up) scanned in 83.83 seconds

